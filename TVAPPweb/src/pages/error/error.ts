@@ -35,6 +35,7 @@ export class ErrorPage {
   ionViewWillLeave() {
     // 清除定时器
     clearTimeout(this.interval);
+    this.closeSecond=3;
   }
 
   cutTimeShow() {

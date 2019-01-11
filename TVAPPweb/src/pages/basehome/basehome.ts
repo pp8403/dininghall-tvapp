@@ -35,10 +35,11 @@ export class BasehomePage {
   }
 
   ionViewDidEnter() {
+    this.heartbeat.stop();
     clearTimeout(this.interval);
     this.interval = setTimeout(() => {
       this.loadDate();
-    }, 200);
+    }, 300);
   }
 
   loadDate() {
@@ -84,12 +85,14 @@ export class BasehomePage {
             return this.common.SetStorage(this.common.LSName_refreshValue, heartbeatPack.data.refreshval);
           }).then(() => {
             this.msgArr.push({ type: 0, msg: "正在启动心跳包..." });
-            this.heartbeat.start();
+            //this.heartbeat.start();
   
             this.msgArr.push({ type: 0, msg: "正在检查远程配置..." });
             //判断设置跳转到首页
-            setTimeout(() => {
-              this.common.GotoHomePage().then(suc => { });
+            this.interval =setTimeout(() => {
+              this.common.GotoHomePage().then(suc => { 
+                this.heartbeat.start();
+              });
             }, 2000);
           });
         }, error => {
