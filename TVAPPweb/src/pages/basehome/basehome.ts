@@ -7,6 +7,7 @@ import { HttpRequestProvider } from '../../providers/http-request/http-request';
 
 
 import { HearbeatProvider } from '../../providers/hearbeat/hearbeat';
+import { SettimeoutProvider } from '../../providers/settimeout/settimeout';
 
 
 @IonicPage()
@@ -17,13 +18,14 @@ import { HearbeatProvider } from '../../providers/hearbeat/hearbeat';
 export class BasehomePage {
 
   msgArr = [];
-  private interval = null;
+  //private interval = null;
 
   constructor(public navCtrl: NavController,
     private common: CommonProvider,
 
     private http: HttpRequestProvider,
     private heartbeat: HearbeatProvider,
+    private settimeout:SettimeoutProvider,
   ) {
     window['TVHomePage'] = this;
     let urluuid=this.common.getQueryString("uuid");
@@ -36,8 +38,8 @@ export class BasehomePage {
 
   ionViewDidEnter() {
     this.heartbeat.stop();
-    clearTimeout(this.interval);
-    this.interval = setTimeout(() => {
+    
+    this.settimeout.regAction(() => {
       this.loadDate();
     }, 300);
   }
@@ -89,7 +91,7 @@ export class BasehomePage {
   
             this.msgArr.push({ type: 0, msg: "正在检查远程配置..." });
             //判断设置跳转到首页
-            this.interval =setTimeout(() => {
+            this.settimeout.regAction(() => {
               this.common.GotoHomePage().then(suc => { 
                 this.heartbeat.start();
               });
@@ -99,8 +101,8 @@ export class BasehomePage {
           this.msgArr.push({ type: 2, msg: `获取远程配置失败!!!` });
           this.msgArr.push({ type: 2, msg: error });
           this.common.Alert(error);
-          clearTimeout(this.interval);
-          this.interval = setTimeout(() => {
+          
+          this.settimeout.regAction(() => {
             this.loadDate();
           }, 30000);
         });
@@ -108,16 +110,15 @@ export class BasehomePage {
         this.msgArr.push({ type: 2, msg: `接口连接失败!!!` });
         this.msgArr.push({ type: 2, msg: error });
         this.common.Alert(`请检查网络情况和系统配置是否正常！`);
-        clearTimeout(this.interval);
-        this.interval = setTimeout(() => {
+        
+        this.settimeout.regAction(() => {
           this.loadDate();
         }, 30000);
       });
     }, error => {
       this.msgArr.push({ type: 2, msg: `获取UUID失败!!!` });
       this.common.Alert(`获取UUID失败!!!`);
-      clearTimeout(this.interval);
-      this.interval = setTimeout(() => {
+      this.settimeout.regAction(() => {
         this.loadDate();
       }, 30000);
     });
@@ -126,7 +127,7 @@ export class BasehomePage {
 
   ionViewWillLeave() {
     // 清除定时器
-    clearTimeout(this.interval);
+    this.settimeout.clear();
     console.log("===>BaseHompe page leave...");
   }
 

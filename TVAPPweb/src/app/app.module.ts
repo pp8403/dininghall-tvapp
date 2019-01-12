@@ -12,6 +12,7 @@ import { MyApp } from './app.component';
 import { HttpRequestProvider } from '../providers/http-request/http-request';
 import { CommonProvider } from '../providers/common/common';
 import { HearbeatProvider } from '../providers/hearbeat/hearbeat';
+import { SettimeoutProvider } from '../providers/settimeout/settimeout';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HearbeatProvider } from '../providers/hearbeat/hearbeat';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpRequestProvider,
     CommonProvider,
-    HearbeatProvider
+    HearbeatProvider,
+    SettimeoutProvider
   ]
 })
 export class AppModule {}

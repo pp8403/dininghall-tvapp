@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CommonProvider } from '../../providers/common/common';
 import { HttpRequestProvider } from '../../providers/http-request/http-request';
+import { SettimeoutProvider } from '../../providers/settimeout/settimeout';
 
 /**
  * Generated class for the TvhomePage page.
@@ -23,11 +24,12 @@ export class TvhomePage {
   strTimeNowShow = "";
 
   interval = null;
-  timeout_getpro = null;
+  //timeout_getpro = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private common:CommonProvider,
-    private http:HttpRequestProvider
+    private http:HttpRequestProvider,
+    private settimeout:SettimeoutProvider
     ) {
     window['TVHomePage'] = this;
   }
@@ -52,10 +54,10 @@ export class TvhomePage {
   }
 
   getMachineSetedProductList() {
-    clearTimeout(this.timeout_getpro);
+    this.settimeout.clear();
     this.http.Request("getMachineSetedProductList", {}).then(res => {
       this.WindowApplyProducts = res.data;
-      this.timeout_getpro = setTimeout(() => {
+      this.settimeout.regAction(() => {
         this.getMachineSetedProductList();
       }, 30000);
     }, err => {
@@ -64,7 +66,7 @@ export class TvhomePage {
       let msgArr = [];
       msgArr.push(err);
       this.common.ShowErrorModal("系统设置错误", msgArr,20);
-      this.timeout_getpro = setTimeout(() => {
+      this.settimeout.regAction(() => {
         this.getMachineSetedProductList();
       }, 25000);
     });
@@ -74,7 +76,7 @@ export class TvhomePage {
   ionViewWillLeave() {
     // 清除定时器
     clearInterval(this.interval);
-    clearTimeout(this.timeout_getpro);
+    this.settimeout.clear();
     
   }
 
