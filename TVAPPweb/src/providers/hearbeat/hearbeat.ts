@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { CommonProvider } from '../common/common';
 import { HttpRequestProvider } from '../../providers/http-request/http-request';
+import { SettimeoutProvider } from '../settimeout/settimeout';
 /*
   Generated class for the HearbeatProvider provider.
 
@@ -14,7 +15,7 @@ declare let android: any;
 export class HearbeatProvider {
 
   stopFlag = false;
-  interval = null;
+  //interval = null;
   Period = 10;//心跳周期(秒)
   ErrorTimesThenJump = 6;//心跳失败N次后跳转到home
 
@@ -23,13 +24,14 @@ export class HearbeatProvider {
   constructor(
     private common: CommonProvider,
     private http: HttpRequestProvider,
+    private settimeout:SettimeoutProvider,
   ) {
 
   }
 
 
   Request() {
-    clearTimeout(this.interval);
+    this.settimeout.clearSingle("Heartbeat");
     this.http.Request("Heartbeat", {}).then(res => {
       this.RequestErrorCount = 0;
 
@@ -50,9 +52,10 @@ export class HearbeatProvider {
                           android.refresh();
                         } else {
                           if (this.stopFlag == false) {
-                            this.interval = setTimeout(() => {
+                            this.settimeout.regActionSingle("Heartbeat",()=>{
                               this.Request();
-                            }, this.Period * 1000);
+                            },this.Period * 1000);
+                            
                           }
                         }
                 });
@@ -74,9 +77,10 @@ export class HearbeatProvider {
         this.common.GotoBasePage();
       }else{
         if (this.stopFlag == false) {
-          this.interval = setTimeout(() => {
+
+          this.settimeout.regActionSingle("Heartbeat",()=>{
             this.Request();
-          }, this.Period * 1000);
+          },this.Period * 1000);
         }
       }
     });
@@ -90,6 +94,6 @@ export class HearbeatProvider {
   }
   stop() {
     this.stopFlag = true;
-    clearTimeout(this.interval);
+    this.settimeout.clearSingle("Heartbeat");
   }
 }
