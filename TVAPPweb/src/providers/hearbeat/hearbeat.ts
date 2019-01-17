@@ -13,7 +13,7 @@ import { SettimeoutProvider } from '../settimeout/settimeout';
 declare let android: any;
 @Injectable()
 export class HearbeatProvider {
-
+  private settimeoutTAG="Heartbeat";
   stopFlag = false;
   //interval = null;
   Period = 10;//心跳周期(秒)
@@ -31,7 +31,7 @@ export class HearbeatProvider {
 
 
   Request() {
-    this.settimeout.clearSingle("Heartbeat");
+    this.settimeout.clearSingle(this.settimeoutTAG);
     this.http.Request("Heartbeat", {}).then(res => {
       this.RequestErrorCount = 0;
 
@@ -52,7 +52,7 @@ export class HearbeatProvider {
                           android.refresh();
                         } else {
                           if (this.stopFlag == false) {
-                            this.settimeout.regActionSingle("Heartbeat",()=>{
+                            this.settimeout.regActionSingle(this.settimeoutTAG,()=>{
                               this.Request();
                             },this.Period * 1000);
                             
@@ -78,7 +78,7 @@ export class HearbeatProvider {
       }else{
         if (this.stopFlag == false) {
 
-          this.settimeout.regActionSingle("Heartbeat",()=>{
+          this.settimeout.regActionSingle(this.settimeoutTAG,()=>{
             this.Request();
           },this.Period * 1000);
         }
@@ -94,6 +94,6 @@ export class HearbeatProvider {
   }
   stop() {
     this.stopFlag = true;
-    this.settimeout.clearSingle("Heartbeat");
+    this.settimeout.clearSingle(this.settimeoutTAG);
   }
 }
