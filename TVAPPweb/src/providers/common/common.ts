@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController, App, ModalController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AppConfig } from '../../app/AppConfig';
 
 
 /*
@@ -110,7 +111,7 @@ export class CommonProvider {
   public GetStorage(key: string) {
     return this.storage.get(key).then(val => {
       if (key == this.LSName_APIURL) {
-        if (val == null) val = '192.168.99.28:5588';
+        if (val == null) val =AppConfig.defaultIPAddr;
         this.APIHost = val;
       }
       return Promise.resolve(val);

@@ -4,43 +4,85 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header hidden>
 
   <ion-navbar>
-    <ion-title >
+    <ion-title>
       {{this.formValue["cantingName"]}} - {{this.formValue["machineName"]}} - {{curMealName}}
     </ion-title>
     <ion-buttons right>
-        <button ion-button >
-            {{strTimeNowShow}}
-        </button>
-      </ion-buttons>
+      <button ion-button>
+        {{strTimeNowShow}}
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content class="bgimg" text-center>
-    <ion-row style="height:100%">
-  <ion-col *ngFor="let window of WindowApplyProducts" style="border-right:1px solid gray">
-      <p style="padding:0;margin:0;">
-          <img src="assets/imgs/ico_lft.png">
-          <!-- <ion-icon name='ios-restaurant' color="danger" is-active="false" style="font-size: 4rem;"></ion-icon> -->
-          <ion-note color="danger" class="shadow2" style="padding:0;margin:0;font-weight: bold;font-size: 4rem;">{{window.name}}
-            提供</ion-note>
+<ion-content class="bgimg3" padding>
+  <ion-note color="dark" style="font-size:3.5rem;font-family: TitleFont">本窗口提供</ion-note>
+  <ion-row *ngIf="WindowApplyProducts.length==1" text-center>
 
-          <!--<ion-icon name='ios-restaurant' color="danger" is-active="false" style="font-size: 4rem;"></ion-icon>-->
-           <img src="assets/imgs/ico_rht.png"> 
+    <ion-col>
+      <p>
+        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+          {{WindowApplyProducts[0].name}}</ion-note>
+      </p>
+      <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;">
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+          {{pro.proname}}</ion-note>
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="WindowApplyProducts.length==2" >
+
+    <ion-col style="border-right:1px solid gray;padding-left: 3rem;">
+      <p text-left>
+        <ion-note class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+          {{WindowApplyProducts[0].name}}</ion-note>
+      </p>
+      <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;" text-left>
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+          {{pro.proname}}</ion-note>
+      </p>
+      <p text-left>
+        <img src="assets/imgs/arrows_left.png" width="28%" />
+      </p>
+    </ion-col>
+    
+    <ion-col style="padding-right:3rem;" >
+      <p text-right>
+        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+          {{WindowApplyProducts[1].name}}</ion-note>
+      </p>
+      <p *ngFor="let pro of WindowApplyProducts[1].prolist" style="margin: 0;" text-right>
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+          {{pro.proname}}</ion-note>
+      </p>
+      <p text-right> 
+        <img src="assets/imgs/arrows_right.png" width="28%" />
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="WindowApplyProducts.length>2" text-center>
+    <ng-container *ngFor="let window of WindowApplyProducts;">
+      <ion-col style="border-right:1px solid gray;">
+        <p>
+          <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+            {{window.name}}</ion-note>
         </p>
-      
-        <p text-center *ngFor="let pro of window.prolist" style="margin: 0;">
-          <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
+
+        <p *ngFor="let pro of window.prolist" style="margin: 0;">
+          <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
             {{pro.proname}}</ion-note>
-      
         </p>
-  </ion-col>
+      </ion-col>
+    </ng-container>
 
-    </ion-row>
- 
-  
+  </ion-row>
+
+
 </ion-content>
