@@ -146,7 +146,9 @@ ion-header{
 ion-navbar{
   min-height: 1rem !important;
 }
-
+.footer-md::before{
+  background-image: none !important;
+}
 .bgimg{
   background-image: url("../assets/imgs/logo.png"),url("../assets/imgs/POS_BG1.png"),url("../assets/imgs/POS_BG2.png");
   background-repeat: no-repeat,no-repeat,no-repeat;

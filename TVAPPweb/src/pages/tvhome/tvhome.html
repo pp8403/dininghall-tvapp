@@ -21,17 +21,30 @@
 
 
 <ion-content class="bgimg3" padding>
-  <ion-note color="dark" style="font-size:3.5rem;font-family: TitleFont">本窗口提供</ion-note>
+  <ion-row>
+    <ion-col text-left col-4>
+        <ion-note color="dark" style="font-size:3.5rem;font-family: TitleFont">本窗口提供</ion-note>
+      </ion-col>
+
+    <ion-col text-right>
+        <ion-note color="dark" style="font-size:2rem;font-family: TitleFont">{{strTimeNowShow}}</ion-note>
+    </ion-col>
+  </ion-row>
   <ion-row *ngIf="WindowApplyProducts.length==1" text-center>
 
     <ion-col>
       <p>
-        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
           {{WindowApplyProducts[0].name}}</ion-note>
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;">
-        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
           {{pro.proname}}</ion-note>
+      </p>
+      <p>
+          <img *ngIf="WindowApplyProducts[0].prolist.length==1" 
+          src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
+          width="50%" style="border-radius: 1.8rem" class="shadow">
       </p>
     </ion-col>
   </ion-row>
@@ -40,28 +53,34 @@
 
     <ion-col style="border-right:1px solid gray;padding-left: 3rem;">
       <p text-left>
-        <ion-note class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+        <ion-note class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
           {{WindowApplyProducts[0].name}}</ion-note>
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;" text-left>
-        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
           {{pro.proname}}</ion-note>
       </p>
       <p text-left>
         <img src="assets/imgs/arrows_left.png" width="28%" />
+        <img *ngIf="WindowApplyProducts[0].prolist.length==1" 
+        src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
+        width="68%" style="border-radius: 1.8rem" class="shadow">
       </p>
     </ion-col>
     
     <ion-col style="padding-right:3rem;" >
       <p text-right>
-        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
           {{WindowApplyProducts[1].name}}</ion-note>
       </p>
       <p *ngFor="let pro of WindowApplyProducts[1].prolist" style="margin: 0;" text-right>
-        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
           {{pro.proname}}</ion-note>
       </p>
       <p text-right> 
+          <img *ngIf="WindowApplyProducts[1].prolist.length==1" 
+          src="{{this.common.GetImgUrl(WindowApplyProducts[1].prolist[0].localpath)}}" 
+          width="68%" style="border-radius: 1.8rem" class="shadow">
         <img src="assets/imgs/arrows_right.png" width="28%" />
       </p>
     </ion-col>
@@ -71,18 +90,22 @@
     <ng-container *ngFor="let window of WindowApplyProducts;">
       <ion-col style="border-right:1px solid gray;">
         <p>
-          <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 8rem;">
+          <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
             {{window.name}}</ion-note>
         </p>
 
         <p *ngFor="let pro of window.prolist" style="margin: 0;">
-          <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 4rem;">
+          <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
             {{pro.proname}}</ion-note>
+        </p>
+        <p>
+            <img *ngIf="window.prolist.length==1" 
+            src="{{this.common.GetImgUrl(window.prolist[0].localpath)}}" 
+            width="90%" style="border-radius: 1.8rem" class="shadow">
         </p>
       </ion-col>
     </ng-container>
 
   </ion-row>
-
 
 </ion-content>
