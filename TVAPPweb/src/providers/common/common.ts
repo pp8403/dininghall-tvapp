@@ -171,4 +171,12 @@ export class CommonProvider {
     return null;
     
   }
+
+  public GetWindowHeight() {
+    return window.screen.height;
+  }
+
+  public GetWindowWidth() {
+    return window.screen.width;
+  }
 }

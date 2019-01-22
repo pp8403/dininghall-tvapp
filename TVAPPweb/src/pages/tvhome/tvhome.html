@@ -44,7 +44,7 @@
       <p>
           <img *ngIf="WindowApplyProducts[0].prolist.length==1" 
           src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
-          width="50%" style="border-radius: 1.8rem" class="shadow">
+           style="border-radius: 1.8rem" class="shadow" height="{{this.common.GetWindowHeight()/2.5}}">
       </p>
     </ion-col>
   </ion-row>
@@ -62,9 +62,14 @@
       </p>
       <p text-left>
         <img src="assets/imgs/arrows_left.png" width="28%" />
-        <img *ngIf="WindowApplyProducts[0].prolist.length==1" 
+        <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
+        WindowApplyProducts[1].prolist[0].localpath!=WindowApplyProducts[0].prolist[0].localpath" 
         src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
         width="68%" style="border-radius: 1.8rem" class="shadow">
+        <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
+        WindowApplyProducts[1].prolist[0].localpath==WindowApplyProducts[0].prolist[0].localpath" 
+        src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
+        width="70%" style="border-radius: 1.8rem;margin-left:30%;position:absolute;" class="shadow">
       </p>
     </ion-col>
     
@@ -78,7 +83,8 @@
           {{pro.proname}}</ion-note>
       </p>
       <p text-right> 
-          <img *ngIf="WindowApplyProducts[1].prolist.length==1" 
+          <img *ngIf="WindowApplyProducts[1].prolist.length==1 && 
+          WindowApplyProducts[1].prolist[0].localpath!=WindowApplyProducts[0].prolist[0].localpath" 
           src="{{this.common.GetImgUrl(WindowApplyProducts[1].prolist[0].localpath)}}" 
           width="68%" style="border-radius: 1.8rem" class="shadow">
         <img src="assets/imgs/arrows_right.png" width="28%" />
