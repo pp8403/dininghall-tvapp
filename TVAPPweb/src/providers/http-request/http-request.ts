@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { CommonProvider } from '../common/common';
+import { AppConfig } from '../../app/AppConfig';
 
 /*
   Generated class for the HttpRequestProvider provider.
@@ -54,8 +55,11 @@ export class HttpRequestProvider {
   private httpPost(actioin: string, postBody: any) {
     return this.common.GetStorage(this.common.LSName_APIURL).then(apihost => {
       return this.common.GetStorage(this.common.LSName_UUID).then(uuid => {
-        let apiurl = "http://" + apihost;
-        apiurl += "/posjk?_action=tv_" + actioin;
+        // let apiurl = "http://" + apihost;
+        // apiurl += "/posjk?_action=tv_" + actioin;
+
+        let apiurl=AppConfig.APIUrlFormat.replace('{url}',apihost).replace('{action}',actioin);
+
         let options = {
           headers: {
             'Content-Type': 'application/json',
