@@ -1,15 +1,12 @@
-package com.esquel.dininghall.tvappshell;
+package com.esquel.dininghall.tvmealshowappshell;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,9 +17,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.esquel.dininghall.tvmealshowappshell.R;
+
 public class MainActivity extends AppCompatActivity {
 
-    static final String TVURL ="http://192.168.99.28:5588/tvhome";
+    static final String TVURL ="http://192.168.99.28:5588/TVMealShowHome";
 
     static long LastTouchPageTS=0;
     static String UUID;
