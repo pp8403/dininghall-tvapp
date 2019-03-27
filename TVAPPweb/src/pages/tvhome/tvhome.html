@@ -39,7 +39,7 @@
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;">
         <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
-          {{pro.proname}}</ion-note>
+          {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
       </p>
       <p>
           <img *ngIf="WindowApplyProducts[0].prolist.length==1" 
@@ -58,7 +58,7 @@
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;" text-left>
         <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
-          {{pro.proname}}</ion-note>
+          {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
       </p>
       <p text-left>
         <img src="assets/imgs/arrows_left.png" width="28%" />
@@ -80,7 +80,7 @@
       </p>
       <p *ngFor="let pro of WindowApplyProducts[1].prolist" style="margin: 0;" text-right>
         <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
-          {{pro.proname}}</ion-note>
+          {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
       </p>
       <p text-right> 
           <img *ngIf="WindowApplyProducts[1].prolist.length==1 && 
@@ -102,7 +102,7 @@
 
         <p *ngFor="let pro of window.prolist" style="margin: 0;">
           <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
-            {{pro.proname}}</ion-note>
+            {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
         </p>
         <p>
             <img *ngIf="window.prolist.length==1" 
