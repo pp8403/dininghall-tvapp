@@ -65,7 +65,7 @@
         <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
         WindowApplyProducts[1].prolist[0].localpath!=WindowApplyProducts[0].prolist[0].localpath" 
         src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
-        width="68%" style="border-radius: 1.8rem" class="shadow">
+        height="{{this.common.GetWindowHeight()/3.6}}" style="border-radius: 1.8rem" class="shadow">
         <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
         WindowApplyProducts[1].prolist[0].localpath==WindowApplyProducts[0].prolist[0].localpath" 
         src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
@@ -86,7 +86,7 @@
           <img *ngIf="WindowApplyProducts[1].prolist.length==1 && 
           WindowApplyProducts[1].prolist[0].localpath!=WindowApplyProducts[0].prolist[0].localpath" 
           src="{{this.common.GetImgUrl(WindowApplyProducts[1].prolist[0].localpath)}}" 
-          width="68%" style="border-radius: 1.8rem" class="shadow">
+          height="{{this.common.GetWindowHeight()/3.6}}" style="border-radius: 1.8rem" class="shadow">
         <img src="assets/imgs/arrows_right.png" width="28%" />
       </p>
     </ion-col>
