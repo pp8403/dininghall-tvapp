@@ -39,7 +39,7 @@
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;">
         <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
-          {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
+          {{pro.proname.length>14?pro.proname.substr(0,14):pro.proname}}</ion-note>
       </p>
       <p>
           <img *ngIf="WindowApplyProducts[0].prolist.length==1" 
