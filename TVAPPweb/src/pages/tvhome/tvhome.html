@@ -34,8 +34,9 @@
 
     <ion-col>
       <p>
-        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
+        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 5rem;">
           {{WindowApplyProducts[0].name}}</ion-note>
+          <ion-badge *ngFor="let prop of WindowApplyProducts[0].lstProp" style="font-size:3rem;margin-right:0.5rem;" [color]="prop=='现点'?'danger':'secondary'">{{prop}}</ion-badge>
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;">
         <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 7rem;">
@@ -53,11 +54,12 @@
 
     <ion-col style="border-right:1px solid gray;padding-left: 3rem;">
       <p text-left>
-        <ion-note class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
+        <ion-note class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 5rem;">
           {{WindowApplyProducts[0].name}}</ion-note>
+          <ion-badge *ngFor="let prop of WindowApplyProducts[0].lstProp" style="font-size:3rem;margin-right:0.5rem;" [color]="prop=='现点'?'danger':'secondary'">{{prop}}</ion-badge>
       </p>
       <p *ngFor="let pro of WindowApplyProducts[0].prolist" style="margin: 0;" text-left>
-        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 5rem;">
           {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
       </p>
       <p text-left>
@@ -75,11 +77,13 @@
     
     <ion-col style="padding-right:3rem;" >
       <p text-right>
-        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
+        <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 5rem;">
           {{WindowApplyProducts[1].name}}</ion-note>
+
+          <ion-badge *ngFor="let prop of WindowApplyProducts[1].lstProp" style="font-size:3rem;margin-right:0.5rem;" [color]="prop=='现点'?'danger':'secondary'">{{prop}}</ion-badge>
       </p>
       <p *ngFor="let pro of WindowApplyProducts[1].prolist" style="margin: 0;" text-right>
-        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
+        <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 5rem;">
           {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
       </p>
       <p text-right> 
@@ -96,12 +100,14 @@
     <ng-container *ngFor="let window of WindowApplyProducts;">
       <ion-col style="border-right:1px solid gray;">
         <p>
-          <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 6rem;">
+          <ion-note color="danger" class="shadow2" style="color:#9b2743;padding:0;margin:0;font-weight: bold;font-size: 5rem;">
             {{window.name}}</ion-note>
+
+          <ion-badge *ngFor="let prop of window.lstProp" style="font-size:3rem;margin-right:0.5rem;" [color]="prop=='现点'?'danger':'secondary'">{{prop}}</ion-badge>
         </p>
 
         <p *ngFor="let pro of window.prolist" style="margin: 0;">
-          <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 6rem;">
+          <ion-note color="dark" class="shadow2" style="font-weight: bold;font-size: 5rem;">
             {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
         </p>
         <p>
