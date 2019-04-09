@@ -63,11 +63,11 @@
           {{pro.proname.length>7?pro.proname.substr(0,7):pro.proname}}</ion-note>
       </p>
       <p text-left>
-        <img src="assets/imgs/arrows_left.png" width="28%" />
+        <img src="assets/imgs/arrows_left.png" width="24%" />
         <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
         WindowApplyProducts[1].prolist[0].localpath!=WindowApplyProducts[0].prolist[0].localpath" 
         src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
-        height="{{this.common.GetWindowHeight()/3.6}}" style="border-radius: 1.8rem" class="shadow">
+        height="{{this.common.GetWindowHeight()/3.8}}" style="border-radius: 1.8rem" class="shadow">
         <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
         WindowApplyProducts[1].prolist[0].localpath==WindowApplyProducts[0].prolist[0].localpath" 
         src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
@@ -90,8 +90,8 @@
           <img *ngIf="WindowApplyProducts[1].prolist.length==1 && 
           WindowApplyProducts[1].prolist[0].localpath!=WindowApplyProducts[0].prolist[0].localpath" 
           src="{{this.common.GetImgUrl(WindowApplyProducts[1].prolist[0].localpath)}}" 
-          height="{{this.common.GetWindowHeight()/3.6}}" style="border-radius: 1.8rem" class="shadow">
-        <img src="assets/imgs/arrows_right.png" width="28%" />
+          height="{{this.common.GetWindowHeight()/3.8}}" style="border-radius: 1.8rem" class="shadow">
+        <img src="assets/imgs/arrows_right.png" width="24%" />
       </p>
     </ion-col>
   </ion-row>
