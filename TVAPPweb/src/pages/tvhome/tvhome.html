@@ -71,7 +71,7 @@
         <img *ngIf="WindowApplyProducts[0].prolist.length==1 && 
         WindowApplyProducts[1].prolist[0].localpath==WindowApplyProducts[0].prolist[0].localpath" 
         src="{{this.common.GetImgUrl(WindowApplyProducts[0].prolist[0].localpath)}}" 
-        width="70%" style="border-radius: 1.8rem;margin-left:30%;position:absolute;" class="shadow">
+        height="{{this.common.GetWindowHeight()/3.8}}" style="border-radius: 1.8rem;margin-left:42%;position:absolute;" class="shadow">
       </p>
     </ion-col>
     
